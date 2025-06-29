@@ -1,0 +1,40 @@
+# Voir https://help.github.com/articles/ignoring-files/ pour plus d'infos sur l'ignorance des fichiers
+
+# dépendances
+/node_modules
+/.pnp
+.pnp.js
+
+# IDE et éditeurs
+/.idea
+/.vscode
+
+# tests
+/coverage
+
+# production
+/build
+/dist
+
+# fichiers temporaires
+/tmp
+/temp
+
+# fichiers système
+.DS_Store
+Thumbs.db
+
+# fichiers d'environnement
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# dossiers d'uploads utilisateurs
+/uploads
