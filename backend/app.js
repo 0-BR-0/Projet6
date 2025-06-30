@@ -1,8 +1,15 @@
 const express = require('express');
+require('dotenv').config();
+const mongoose = require('mongoose');
+const cors = require("cors");
 
 const app = express();
 
-const cors = require("cors");
+
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log('Connexion à MongoDB réussie !'))
+    .catch(() => console.log('Connexion à MongoDB échouée !'));
+
 
 app.use(cors());
 
