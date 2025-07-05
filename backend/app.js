@@ -5,6 +5,9 @@ const cors = require("cors");
 
 const app = express();
 
+const userRoutes = require("./routes/user");
+const bookRoutes = require("./routes/book");
+
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -22,11 +25,24 @@ app.use((req, res, next) => {
 });
 
 
-app.post("/api/auth/signup", signUp)
+app.use("/api/auth", userRoutes);
+app.use("/api/auth", signUp);
+app.use("/api/auth", logIn);
+
+
+app.use("/api/auth/login", userRoutes);
+
+// app.use("/api/books", bookRoutes);
 
 function signUp(req, res, next) {
     const body = req.body;
-    console.log("body:", body);
+    console.log("signUp body:", body);
+    next();
+}
+
+function logIn(req, res, next) {
+    const body = req.body;
+    console.log("logIn body:", body);
     next();
 }
 
