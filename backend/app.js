@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require("cors");
 
 const app = express();
+const path = require('path');
 
 const userRoutes = require("./routes/user");
 const bookRoutes = require("./routes/book");
@@ -24,6 +25,8 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use("/api/books", bookRoutes);
+
 
 app.use("/api/auth", userRoutes);
 app.use("/api/auth", signUp);
@@ -32,7 +35,8 @@ app.use("/api/auth", logIn);
 
 app.use("/api/auth/login", userRoutes);
 
-// app.use("/api/books", bookRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 
 function signUp(req, res, next) {
     const body = req.body;
